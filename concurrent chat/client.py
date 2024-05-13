@@ -7,6 +7,7 @@ host="127.0.0.1"
 port=2177
 ##3 create the client_socket 
 client_socket=socket(AF_INET,SOCK_STREAM)
+client_socket.connect(host,port)
 ## create function for receiving data 
 def recv_thread(client_socket):
     while True:
