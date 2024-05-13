@@ -20,11 +20,11 @@ def recv_thread(client_socket):
 while True:
     thread=threading.Thread(target=recv_thread,args=(client_socket))
     thread.start()
-    thread.join()
     while True:
         send_data=input("server:")
         if send_data.lower()=='bye':
            client_socket.send(send_data.encode("utf-8"))
            break
         client_socket.send(send_data.encode("utf-8"))
+    thread.join()
     client_socket.close()
