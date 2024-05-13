@@ -27,14 +27,13 @@ def recv_thread(session_id):
 def client_thread(session_id):
     thread=threading.Thread(target=recv_thread,args=(session_id,))
     thread.start()
-    thread.join()
     while True:
         send_data=input("server:")
         if send_data.lower()=='bye':
           session_id.send(send_data.encode("utf-8"))
           break
         session_id.send(send_data.encode("utf-8"))
-   
+   thread.join()
 ##8
 while True:
    session_id ,client_addr = server_socket.accept()
